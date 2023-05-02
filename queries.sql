@@ -18,6 +18,7 @@ SELECT * from animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
 
 
 /* Project Day 2 */
+BEGIN;
 
 UPDATE animals SET species = 'unspecified';
 
@@ -27,11 +28,15 @@ UPDATE animals SET species = 'digimon' WHERE name like '%mon';
 
 UPDATE animals SET species = 'pokemon' WHERE species is NULL;
 
+BEGIN;
+
 DELETE FROM animals;
 
 rollback;
 
 SELECT * FROM animals;
+
+BEGIN;
 
 DELETE FROM animals WHERE date_of_birth >= '2022-01-01';
 
