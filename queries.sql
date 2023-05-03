@@ -86,4 +86,4 @@ SELECT animals.name AS AnimalName, species.name AS SpeciesName, owners.full_name
 SELECT animals.name, owners.full_name, animals.escape_attempts FROM animals INNER JOIN owners ON animals.owner_id=owners.id INNER JOIN species ON animals.species_id=species.id WHERE escape_attempts=0 AND owners.full_name='Dean Winchester';
 
 /*// 7 Who owns the most animals?*/
-SELECT owners.full_name, COUNT(animals.id) AS AnimalCount FROM owners INNER JOIN animals ON owners.id = animals.owner_id GROUP BY owners.id ORDER BY animal_count DESC LIMIT 1;
+SELECT owners.full_name, COUNT(animals.id) AS AnimalCount FROM owners INNER JOIN animals ON owners.id = animals.owner_id GROUP BY owners.id ORDER BY AnimalCount DESC LIMIT 1;
