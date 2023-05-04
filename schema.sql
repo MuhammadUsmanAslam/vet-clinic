@@ -26,3 +26,14 @@ ALTER TABLE animals ADD FOREIGN KEY(species_id) REFERENCES species(id);
 /*// Add column owner_id which is a foreign key referencing the owners table*/
 ALTER TABLE animals ADD COLUMN owner_id int;
 ALTER TABLE animals ADD FOREIGN KEY(owner_id) REFERENCES owners(id);
+
+
+/* Project Day 4 */
+/* 1 Create a table named vets with the following columns: */
+CREATE TABLE vets (id INT Generated ALWAYS AS IDENTITY PRIMARY KEY, name VARCHAR(100), age INT, date_of_graduation DATE);
+
+/* 2 Create a "join table" called specializations to handle this relationship. */
+CREATE TABLE specializations (species_id INT CONSTRAINT fk_specializations_species_id REFERENCES species(id), vet_id INT CONSTRAINT fk_vet_id REFERENCES vets(id));
+
+/* 3 Create a "join table" called visits to handle this relationship, it should also keep track of the date of the visit. */
+CREATE TABLE visits (animal_id INT CONSTRAINT fk_animal_id REFERENCES animals(id), vet_id INT CONSTRAINT fk_visits_vet_id REFERENCES vets(id), visited_date date NOT NULL DEFAULT CURRENT_DATE);
